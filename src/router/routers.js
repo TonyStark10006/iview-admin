@@ -22,9 +22,9 @@ export default [
     component: () => import('@/view/login/login.vue')
   },
   {
-    path: '/',
-    name: '_home',
-    redirect: '/home',
+    path: '/panel',
+    name: 'panel',
+    // redirect: '/panel/home',
     component: Main,
     meta: {
       hideInMenu: true,
@@ -32,16 +32,26 @@ export default [
     },
     children: [
       {
-        path: '/home',
+        path: '/panel/home',
         name: 'home',
+        alias: '/panel',
         meta: {
           hideInMenu: true,
-          title: '首页',
+          title: '控制面板',
           notCache: true
         },
         component: () => import('@/view/single-page/home')
       }
     ]
+  },
+  {
+    path: '/',
+    name: 'index',
+    meta: {
+      title: '主页',
+      icon: 'md-home'
+    },
+    component: () => import('@/view/index/index')
   },
   {
     path: '',
